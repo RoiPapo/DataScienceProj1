@@ -1,13 +1,15 @@
 import pandas as pd
-
+import math
 
 def load_data(path, features):
-    features = ['age', 'earnings', 'hours', 'week', 'female']
     path = 'hw1_sample_input.csv'
-    data3 = pd.read_csv('cps09mar.csv')
-    data2 = pd.read_csv(path)
-    df = pd.DataFrame(data2, columns=features)
-    print(df)
+    df = pd.read_csv(path)
+    data = df.to_dict(orient="list")
+    keys_to_remove = ["race", "union", "uncov", "region", "hisp"]
+    for key in keys_to_remove:
+        del data[key]
+    print(data["earnings"])
+
 
 
 def filter_by_features(data, feature, vlaues):
