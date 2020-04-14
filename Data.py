@@ -11,7 +11,7 @@ def load_data(path, features):
     df = pd.read_csv(path)
     data = df.to_dict(orient="list")
     filtered_data = {k: data[k] for k in features}  # construct dict only with the features we have
-    filtered_data["earnings"] = (list((map(lambda x: math.log10(x), filtered_data["earnings"]))))  # normalizatoin
+    filtered_data["earnings"] = (list((map(lambda x: math.log10(x), filtered_data["earnings"]))))  # normalization
     return filtered_data
 
 
@@ -33,4 +33,15 @@ def filter_by_features(data, feature, values):
         for i in reversed(list_of_wanted_indexes):
             dict_of_fitting_values.setdefault(key, []).append(value.pop(i))
 
-    return dict_of_fitting_values, data # the second includes no fitting items
+    return dict_of_fitting_values, data  # the second includes no fitting items
+
+
+def print_details(population, data, features, statistic_functions):
+    """
+    :param population: population name string
+    :param data: dictionary
+    :param features: list
+    :param statistic_functions: list of statisic methods from Statistics.py
+    :return: statistic charts on data, using the methods from statistic_functions
+    """
+    pass
