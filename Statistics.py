@@ -4,7 +4,10 @@ def sum_of_values(values):
     :param values: list of values
     :return: sum of values
     """
-    return sum(values)
+    total = 0
+    for value in values:
+        total += value
+    return total
 
 
 def mean(values):
