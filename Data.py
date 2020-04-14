@@ -11,4 +11,15 @@ def load_data(path, features):
 
 
 def filter_by_features(data, feature, vlaues):
-    pass
+    list_of_wanted_indexes = []
+    dict_of_fitting_values = {}
+    l1 = []
+    for index, elem in enumerate(data[feature]):
+        if elem in vlaues:
+            list_of_wanted_indexes.append(index)
+
+    for key, value in data.items():
+        for i in reversed(list_of_wanted_indexes):
+            dict_of_fitting_values.setdefault(key, []).append(value.pop(i))
+
+    return dict_of_fitting_values, data # the second includes no fitting items
