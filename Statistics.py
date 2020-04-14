@@ -1,8 +1,8 @@
 def sum_of_values(values):
     """
 
-    :param values:
-    :return:
+    :param values: list of values
+    :return: sum of values
     """
     return sum(values)
 
@@ -30,4 +30,15 @@ def median(values):
 
 
 def population_statistics(population, data, feature_1, feature_2, min__val, max_val, statistics_functions):
+    """
+        :param statistics_functions:
+        :param max_val:
+        :param min__val:
+        :param feature_2:
+        :param feature_1:
+        :param data:
+        :param population
+        :param values:
+        :return:
+        """
     pass

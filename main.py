@@ -11,8 +11,9 @@ def main(argv):
     women_stats = [[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0]]
     all_stats = [[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0]]
     data = load_data(path, features)
-    s = set([1])
-    filter_by_features(data, 'female', s)
+    all_dict = load_data(path, features)
+    values = set([1])
+    female_dict, male_dict = filter_by_features(data, 'female', values)
 
 
 if __name__ == "__main__":
