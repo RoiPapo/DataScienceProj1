@@ -40,6 +40,7 @@ def population_statistics(population, data, feature_1, feature_2, min_val, max_v
     :return: collecting the records for which min_val<=feature_1<=max_val, and displaying statistic charts on a
     specific population's data's feature_2
     """
+    population_type = ['Men', 'Women', 'All']
     for i in range(data[feature_1]):
         if min_val <= data[feature_1][i] <= max_val:
             filter_by_features(data, feature_1, values)
