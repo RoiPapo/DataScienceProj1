@@ -1,5 +1,6 @@
 import pandas as pd
 import math
+from statistics import *
 
 
 def load_data(path, features):
@@ -32,7 +33,6 @@ def filter_by_features(data, feature, values):
     for key, value in data.items():
         for i in reversed(list_of_wanted_indexes):
             dict_of_fitting_values.setdefault(key, []).append(value.pop(i))
-
     return dict_of_fitting_values, data  # the second includes no fitting items
 
 
@@ -44,4 +44,20 @@ def print_details(population, data, features, statistic_functions):
     :param statistic_functions: list of statisic methods from Statistics.py
     :return: statistic charts on data, using the methods from statistic_functions
     """
-    pass
+    print(f"{population}:")
+    for key, value in data.items():
+        if key in features:
+            print(f"{key.title()}: ", end='')
+            for index, func in enumerate(statistic_functions):
+                if index ==2:
+                    print(f"{func(value)}")
+                else:
+                    print(f"{func(value)}, ", end='')
+
+    #
+    #
+    # print(f"{population}:\n"
+    #       f"Age: {statistic_functions.sum(data['age'])}, {mean(data['age'])}, {median(data['age'])}\n"
+    #       f"Earnings: {sum(data['earnings'])}, {mean(data['earnings'])}, {median(data['earnings'])}\n"
+    #       f"Hours: {sum(data['hours'])}, {mean(data['hours'])}, {median(data['hours'])}\n"
+    #       f"Week: {sum(data['week'])}, {mean(data['week'])}, {median(data['week'])}")

@@ -1,7 +1,10 @@
-def sum_of_values(values):
+from Data import *
+
+
+def sum2(values):
     """
     :param values: list of values
-    :return: sum of values
+    :return: sum2 of values
     """
     total = 0
     for value in values:
@@ -14,7 +17,7 @@ def mean(values):
     :param values:
     :return: mean of values
     """
-    return sum(values) / len(values)
+    return sum2(values) / len(values)
 
 
 def median(values):
@@ -24,7 +27,7 @@ def median(values):
     """
     values.sort()
     if len(values) % 2 != 0:
-        return values[(len(values) - 1) / 2]
+        return values[(len(values) - 1) // 2]
     return (values[len(values) // 2] + values[(len(values) // 2) - 1]) / 2
 
 
@@ -42,7 +45,6 @@ def population_statistics(population, data, feature_1, feature_2, min_val, max_v
     """
     for i in range(data[feature_1]):
         if min_val <= data[feature_1][i] <= max_val:
-            filter_by_features(data, feature_1, values)
-    for population in population_type:
+            fitting_dict, un_fitting = filter_by_features(data, feature_1, set(range(min_val, max_val + 1)))
         for method in statistics_functions:
-            print_details(population, dict_of_fitting_values, features, method)
+            print_details(population, fitting_dict, feature_2, method)
