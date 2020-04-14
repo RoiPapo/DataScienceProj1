@@ -1,5 +1,4 @@
 import sys
-from statistics import *
 from Data import *
 from Statistics import sum2, median, mean, population_statistics
 
