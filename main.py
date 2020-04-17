@@ -29,9 +29,8 @@ def main(argv):
     for index, dict in enumerate(pop_list2):
         population_statistics(pop_list2[index], dict_list2[index], features_p2[0], features_p2[1], 0, 10, stat_func_q2)
     print(f"If 11<=Y<=20, then:")
-    for i in range(len(pop_list2)):
-        print(pop_list2)
-        population_statistics(pop_list2[i], dict_list2[i], features_p2[0], features_p2[1], 0, 10, stat_func_q2)
+    for index, dict in enumerate(pop_list2):
+        population_statistics(pop_list2[index], dict_list2[index], features_p2[0], features_p2[1], 11, 20, stat_func_q2)
 
 
 if __name__ == "__main__":
