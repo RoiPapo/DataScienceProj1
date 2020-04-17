@@ -45,5 +45,4 @@ def population_statistics(population, data, feature_1, feature_2, min_val, max_v
     """
 
     fitting_dict, unfitting_dict = filter_by_features(data, feature_1, set(range(min_val, max_val)))
-    for method in statistics_functions:
-        print_details(population, fitting_dict, feature_2, method)
+    print_details(population, fitting_dict, feature_2, statistics_functions)
