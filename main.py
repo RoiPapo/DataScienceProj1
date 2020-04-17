@@ -6,19 +6,32 @@ from Statistics import sum2, median, mean, population_statistics
 def main(argv):
     path = 'hw1_sample_input.csv'  # REMEMBER T0 CHANGE BEFORE HANDING
     features = ['age', 'female', 'education', 'earnings', 'hours', 'week', 'marital']
-    features_of_part_a = ['age', 'earnings', 'hours', 'week']
+    features_p1 = ['age', 'earnings', 'hours', 'week']
     print("Question 1:")
     data = load_data(path, features)
     all_dict = load_data(path, features)
     values = set([1])
     female_dict, male_dict = filter_by_features(data, 'female', values)
-    dict_list = [male_dict, female_dict, all_dict]
-    population_list = ["Men", "Women", "All"]
+    dict_list1 = [male_dict, female_dict, all_dict]
+    pop_list = ["Men", "Women", "All"]
     statistic_functions = [sum2, mean, median]
-    for index, chosen_dict in enumerate(dict_list):
-        print_details(population_list[index], chosen_dict, features_of_part_a, statistic_functions)
+
+    for index, chosen_dict in enumerate(dict_list1):
+        print_details(pop_list[index], chosen_dict, features_p1, statistic_functions)
 
     print("\nQuestion 2:")
+    stat_func_q2 = [mean, median]
+    features_p2 = ['education', 'earnings', 'marital']
+    pop_list2 = ["Married Women", "Unmarried Women"]
+    married_dict, unmarried_dict = filter_by_features(female_dict, 'marital', values)
+    dict_list2 = [married_dict, unmarried_dict]
+    print("If 0<=Y<=10, then:")
+    for index, dict in enumerate(pop_list2):
+        population_statistics(pop_list2[index], dict_list2[index], features_p2[0], features_p2[1], 0, 10, stat_func_q2)
+    print(f"If 11<=Y<=20, then:")
+    for i in range(len(pop_list2)):
+        print(pop_list2)
+        population_statistics(pop_list2[i], dict_list2[i], features_p2[0], features_p2[1], 0, 10, stat_func_q2)
 
 
 if __name__ == "__main__":
