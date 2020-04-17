@@ -25,11 +25,17 @@ def main(argv):
     pop_list2 = ["Married Women", "Unmarried Women"]
     married_dict, unmarried_dict = filter_by_features(female_dict, 'marital', values)
     dict_list2 = [married_dict, unmarried_dict]
+    print(len(married_dict['age']))
+    print(len(unmarried_dict['age']))
     print("If 0<=Y<=10, then:")
     for index, dict in enumerate(pop_list2):
+        print('' + len(married_dict['age']))
+        print(len(unmarried_dict['age']))
         population_statistics(pop_list2[index], dict_list2[index], features_p2[0], features_p2[1], 0, 10, stat_func_q2)
     print(f"If 11<=Y<=20, then:")
     for index, dict in enumerate(pop_list2):
+        print(len(married_dict['age']))
+        print(len(unmarried_dict['age']))
         population_statistics(pop_list2[index], dict_list2[index], features_p2[0], features_p2[1], 11, 20, stat_func_q2)
 
 
