@@ -11,7 +11,7 @@ def load_data(path, features):
     """
     df = pd.read_csv(path)
     data = df.to_dict(orient="list")
-    filtered_data = {k: data[k] for k in features}  # construct dict only with the features we have
+    filtered_data = {k: data[k] for k in features.split()}  # construct dict only with the features we have
     filtered_data["earnings"] = (list((map(lambda x: math.log10(x), filtered_data["earnings"]))))  # normalization
     return filtered_data
 
@@ -25,7 +25,25 @@ def filter_by_features(data, feature, values):
     """
     list_of_wanted_indexes = []
     dict_of_fitting_values = {}
-    l1 = []
+    for index, elem in enumerate(data[feature]):
+        if elem in values:
+            list_of_wanted_indexes.append(index)
+
+    for key, value in data.items():
+        for i in reversed(list_of_wanted_indexes):
+            dict_of_fitting_values.setdefault(key, []).append(value.pop(i))
+    return dict_of_fitting_values, data  # the second includes no fitting items
+
+
+def filter_by_features2(data, feature, values):
+    """
+    :type values: set
+    :type feature: list
+    :type data: dict
+    :return : 2 dicts one with the fitting condition and one without
+    """
+    list_of_wanted_indexes = []
+    dict_of_fitting_values = {}
     for index, elem in enumerate(data[feature]):
         if elem in values:
             list_of_wanted_indexes.append(index)
@@ -49,7 +67,7 @@ def print_details(population, data, features, statistic_functions):
         if key in features:
             print(f"{key.title()}: ", end='')
             for index, func in enumerate(statistic_functions):
-                if index == len(statistic_functions)-1:
+                if index == len(statistic_functions) - 1:
                     print(f"{func(value)}")
                 else:
                     print(f"{func(value)}, ", end='')

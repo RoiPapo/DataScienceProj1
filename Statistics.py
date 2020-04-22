@@ -46,6 +46,5 @@ def population_statistics(population, data, feature_1, feature_2, min_val, max_v
     :return: collecting the records for which min_val<=feature_1<=max_val, and displaying statistic charts on a
     specific population's data's feature_2
     """
-
-    fitting_dict, unfitting_dict = filter_by_features(data, feature_1, set(range(min_val, max_val)))
+    fitting_dict, unfitting_dict = filter_by_features2(data, feature_1, set(range(min_val, max_val)))
     print_details(population, fitting_dict, feature_2, statistics_functions)
